@@ -14,7 +14,7 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+    return Array.isArray(value)
     
     
     
@@ -31,8 +31,21 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
-    
+    //if statement to logically determine the value is an object
+    if(value === null){
+        return false;
+    }else if(typeof value === 'string'){ //using typeof to check the value's data-type
+        return false;
+    }else if(typeof value === 'boolean'){
+        return false;
+    }else if(typeof value === 'number'){
+        return false;
+    //using isArray() to check if value is an array OR value is a Date
+    }else if(Array.isArray(value) === true || Object.prototype.toString.call(value) === "[object Date]"){
+        return false;
+    }else {
+        return true; //if every other logic test fails, then the value must be an object
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -47,6 +60,22 @@ function isObject(value) {
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
     
+//SAME AS BEFORE EXCEPT ARRAYS WILL RETURN TRUE AS WELL
+      if(value === null){
+        return false;
+    }else if(typeof value === 'string'){
+        return false;
+    }else if(typeof value === 'boolean'){
+        return false;
+    }else if(typeof value === 'number'){
+        return false;
+    }else if(Object.prototype.toString.call(value) === "[object Date]"){
+        return false;
+    }else if(Array.isArray(value)){
+        return true; //array will return true 
+    }else {
+        return true; //object will return true
+    }
     
     
     
@@ -74,12 +103,29 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+//SAME AS BEFORE EXCEPT RETURNING A STRING OF THE DATATYPE INSTEAD OF A BOOLEAN
+    if(value === null){
+        return 'null';
+    }else if(typeof value === 'number'){
+        return 'number';
+    }else if(typeof value === 'string'){
+		return 'string';
+	}else if(typeof value === 'undefined'){
+		return 'undefined';
+	}else if(typeof value === 'boolean'){
+		return 'boolean';
+	}else if(typeof value === 'function'){
+		return 'function';
+	}else if(Object.prototype.toString.call(value) === "[object Date]"){
+		return 'date';
+	}else if(Array.isArray(value)){
+		return 'array';
+	}else {
+		return 'object';
+	} 
     // YOUR CODE ABOVE HERE //
 }
+
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
