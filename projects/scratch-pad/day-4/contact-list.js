@@ -35,7 +35,11 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
-
+    return {    // returns an object that contains the given arguments
+        id: id,
+        nameFirst: nameFirst,
+        nameLast: nameLast
+    };
 } 
 
 
@@ -43,13 +47,49 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
-        }
+        },
+        // add contact api implemented through .push()
+        addContact: function(contact){
+            return contacts.push(contact);
+        },
+        // find contact api 
+        findContact: function(fullName){
+            //for-loop to access the contacts array
+            for(var i = 0; i < contacts.length; i++){
+                //logic statment to match fullName to an object within contacts array
+                if(fullName === contacts[i].nameFirst + ' ' + contacts[i].nameLast){
+                    return contacts[i];
+                }
+            }
+        },
+        // remove contact api
+        removeContact: function(contact){
+            //reassigns contacts array through using filter
+            contacts = contacts.filter(function (thisContact){ //filter takes an anonymous function as args
+                //logic to determine which contact will be removed
+                if(thisContact.id !== contact.id){
+                    return thisContact;
+                }
+            }); 
+        },
+        printAllContactNames: function(){
+            //array to store name values from the objects within the contacts array
+			var nameArr = [];
+			    //for-loop to access contacts array
+				for(var i = 0; i < contacts.length; i++){
+				    //adds nameFirst & nameLast values together and pushes into newArr array  
+				    nameArr.push(contacts[i]['nameFirst'] + " " +
+					    contacts[i]['nameLast']);
+				}
+				//returns nameArr array indexes joined into a string with line breaks
+				return nameArr.join('\n');
+    	}
     }
 }
 
