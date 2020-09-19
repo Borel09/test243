@@ -4,12 +4,12 @@
  * 0. When code is executed, the interpretor runs the code in order from the first line 
  * to last, and from left-to-right. This process of reading the code and determining how 
  * the order is read, is referred to as control-flow. While code is being executed the 
- * interpretor may come across conditional statments that may direct the interpretor in
- * what order to read the code, if certain conditions are met. These conditional statements 
+ * interpretor may come across conditional statments that will direct the interpretor in
+ * what order to read the code if certain conditions are met. These conditional statements 
  * include If(), else-if(), else, and switch() statements.
  * 
  * 1. if(expression){code that is ran if true}: An if statment accepts an expression that will 
- * act as a test. If any code that runs through this expression and proves to be true, then the 
+ * act as a test. If any code that runs through this expression proves to be true, then the 
  * code with in the {} of the if statment will execute
  * 
  * 2. else-if(): This expression can only be used after an if() statement. else-if blocks allow 
@@ -21,9 +21,9 @@
  * 
  * 4. switch(): The switch statement is an alternative to if-else block chains. These statements
  * provide a way of checking a conditional expression against more than one case block. If any of
- * the cases match the expression then the entire case code-block is executed. The case code-blocks
+ * the cases match the expression, then the entire case code-block is executed. The case code-blocks
  * end with the break keyword. Just like if-else chains, switch statements can have a default setting
- * if all cases fail the test. This is done through the default keyword. 
+ * that will execute if all cases fail the test. This is done through the default keyword. 
  *
  */
  
