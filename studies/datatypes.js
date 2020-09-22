@@ -49,6 +49,13 @@
  * 
  * 8. Null: Null simply means the variable has no value. Not to be confused with 0 or an empty string
  * 
+ * // COPY BY VALUE/REFERENCE //
+ * 9. Copy by value: a copy of the parameter's value is made in the memory and the caller has a completely
+ * seperate variable than the callee. These variables would have the same value.
+ * 
+ * 10. Copy by reference: the caller and the one being called share the same variable and if the variable is
+ * modified the effect is visible to both.
+ * 
  */
  
  
@@ -150,3 +157,20 @@
  var abc = null;
  console.log(abc); // => prints null
 
+ // 9. COPY BY VALUE //
+ var a = 12;
+ var b = 'words';
+ var c = null;
+    // for 'd' and 'e' the values of 'a' and 'b' are copied into them
+ var d = a;
+ var e = b;
+ console.log(a, b, d, e); // => 12, 'words', 12, 'words'
+ 
+ // 10. COPY BY REFERENCE //
+ let human = {name: 'Ryan'};
+ let coder = human; //copying the value of human to coder
+    //acting change on coder variable
+    coder.name = 'Ryan Borel';
+    //chages the human variable
+    console.log(human.name); // => prints 'Ryan Borel'
+    
