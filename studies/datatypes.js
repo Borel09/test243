@@ -4,11 +4,11 @@
  * 0: Understanding the different value types used in JavaScript is important because it allows us to
  *be able to manipulate values and data within a program. JavaScript types are considered dynamic, which
  *allows the ability for the same variable to store different data types.JavaScript uses six main data 
- *types and can be seperated into three different categories: Primitive and Complex. Primitive data types 
+ *types and can be separated into three different categories: Primitive and Complex. Primitive data types 
  *refer to the fact that variables have a fixed amount of memory, however, complex data types do not have 
- *a fixed size. Therefore, primitive datatypes store data by copying values and complex data types
+ *a fixed size. Therefore, primitive data types store data by copying values and complex data types
  *store data through copying by reference. The three primitive data types are strings, numbers, 
- *and bolean values. The three complex data types are objects, array, and function. It is important to
+ *and boolean values. The three complex data types are objects, array, and function. It is important to
  *note that there is a special data type category reserved for null and undefined values.
  * 
  * //PRIMITIVE//
@@ -16,9 +16,9 @@
  * assigning that value to a variable.
  * 
  * 2. Number: The number type is used to represent positive or negative integers, and floating point
- * numbers. This type includes infinitiy, negative infinity, and NaN(not a number). NaN can be the end
+ * numbers. This type includes infinity, negative infinity, and NaN(not a number). NaN can be the end
  * result of an undefined bit of code or something might simply be invalid. Number types can also be acted
- * upon by arithmatic operators such as: multiplication (*), division (/), addition (+), and subtraction(-).
+ * upon by arithmetic operators such as: multiplication (*), division (/), addition (+), and subtraction(-).
  * Finally, there are special "numeric" based values that are considered the number type, however, they do 
  * not have the value of an actual number. These special values are Infinity, -Infinity, and not a number (NaN)
  * Infinity, both positive and negative, represent the mathematical concept of infinity(∞). NaN, representing
@@ -26,19 +26,19 @@
  * undefined.
  * 
  * 3. Boolean: True or False. This type is used to store values that are either true or false. These 
- * values can be the end result of comparitive logic and expressions
+ * values can be the end result of comparative logic and expressions
  * 
  * //COMPLEX//
- * 4. Objects: Objects allow you store collections or lists of data. One way to think about how objects work is 
+ * 4. Objects: Objects allow you to store collections or lists of data. One way to think about how objects work is 
  * by looking at real-life objects and distinguishing their properties and values. Objects work by having 
  * key-value pairs to associate data with. The key name is always a string and the value can be any data type.
  * Objects values and properties can be accessed by using for-in loops, bracket, and dot(.) notation. 
  * 
  * 5. Arrays: Another way of having a list is by storing multiple values in a single value. Array's operate 
  * off of a zero-based index system. Through this system we can access the data stored inside of an array. 
- * Array's are created through open and closed brackets []. Array's can be accessed through for-loops and
+ * Arrays are created through open and closed brackets []. Arrays can be accessed through for-loops and
  * looping through the array's indexes. Furthermore, only bracket-notation can be used on an array. 
- * Dot(.) notation is not usuable on arrays.
+ * Dot(.) notation is not usable on arrays.
  * 
  * 6. Functions: The function type are essentially objects that can be called and execute a block of code.
  * Function can return other functions and functions can be passed as arguments in other functions. JavaScript
@@ -68,7 +68,7 @@
  console.log(add); // => prints 15
  var multiX2 = add * num2;
  console.log(multiX2); // => prints 75
-    //creating the infinity varaible and assigning it the value of infinity through arithmetic
+    //creating the infinity variable and assigning it the value of infinity through arithmetic
  var infinity = 1 / 0;
  console.log(infinity); // => prints Infinity
     //the result of this expression does not yield a mathematical number
@@ -120,7 +120,7 @@
  console.log(animals[animals.length-1]); // => prints bird
  
  // 6. FUNCTIONS //
-    //function creation with paramters and {}
+    //function creation with parameters and {}
  function searchAnimalIndex(array, string){
     let dnf = "animal not found";   //temporary variable only to be used when function is called
     //looping through the parameter array
@@ -130,7 +130,7 @@
             return i;
         }
     }
-    return dnf; // other wise return dnf
+    return dnf; // otherwise return dnf
  }
  console.log(searchAnimalIndex(animals, "cat")); // => prints index of cat 1
  console.log(searchAnimalIndex(animals, "human")); // => animal not found
@@ -146,6 +146,7 @@
  console.log(ghi); // => prints undefined
  
  // 8. NULL //
-    //creating a null variable or a true unkown value
+    //creating a null variable or a true unknown value
  var abc = null;
  console.log(abc); // => prints null
+
