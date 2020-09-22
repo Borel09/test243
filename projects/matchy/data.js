@@ -94,9 +94,9 @@ console.log(animals.length);
 var friends = []; //using array because this is a simple list not a collection.
 
 function getRandom(array){
-  return array[Math.floor(Math.random() * array.length)];
+  return Math.floor(Math.random() * array.length);
 }
-friends.push(getRandom(animals).name);
+friends.push(animals[getRandom(animals)].name);
 console.log(friends);
 
 animal['friends'] = friends;
