@@ -1,19 +1,19 @@
 /**
  * CONTROL-FLOW:
  * 
- * 0. When code is executed, the interpretor runs the code in order from the first line 
+ * 0. When code is executed, the interpreter runs the code in order from the first line 
  * to last, and from left-to-right. This process of reading the code and determining how 
  * the order is read, is referred to as control-flow. While code is being executed the 
- * interpretor may come across conditional statments that will direct the interpretor in
+ * interpreter may come across conditional statements that will direct the interpreter in
  * what order to read the code if certain conditions are met. These conditional statements 
  * include If(), else-if(), else, and switch() statements.
  * 
- * 1. if(expression){code that is ran if true}: An if statment accepts an expression that will 
+ * 1. if(expression){code that is ran if true}: An if statement accepts an expression that will 
  * act as a test. If any code that runs through this expression proves to be true, then the 
- * code with in the {} of the if statment will execute
+ * code with in the {} of the if statement will execute
  * 
  * 2. else-if(): This expression can only be used after an if() statement. else-if blocks allow 
- * the conditional statment to check more than one condition. This allows for a second block of 
+ * the conditional statement to check more than one condition. This allows for a second block of 
  * code to run if the first if() statement fails and passes the expression of the else-if() block.
  * 
  * 3. else: An else statement acts as a default setting for if-else-if block chains. The else code
@@ -58,7 +58,7 @@ let timeMsg = ['morning.', 'lunch.', 'the afternoon.', 'time to code.', 'time to
 let currentTime = "It's ";
 let defaultMsg = "NUMBER EXCEEDS 24 HOURS";
 //if conditional chain to determine what to say back to the user depending on the number that is 
-//supplied in the function arguements.
+//supplied in the function arguments.
 	if(num1 < 7){
 		console.log(currentTime + timeMsg[4]); // => "It's time to sleep."
 	}
@@ -78,7 +78,7 @@ let defaultMsg = "NUMBER EXCEEDS 24 HOURS";
         console.log(currentTime + timeMsg[4]); // => "It's time to sleep."
     }
     /**
-     * the else statement acts as a default state that will trigger if all previous checks fail.
+     * The else statement acts as a default state that will trigger if all previous checks fail.
      * in this case, the default state will tell the user when their input number is greater
      * than a 24 hour day.
      */
@@ -143,3 +143,5 @@ let defaultMsg2 = "NUMBER EXCEEDS 24 HOURS";
 }
 
 switchTime(19);
+
+
