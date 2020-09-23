@@ -77,7 +77,7 @@ function testFunc(array){
 console.log(testFunc(arr1)); // prints => [ 'this array used var', 'this string used let' ]
 
 const num1 = 10;
-      num1 += 6;
+      //num1 += 6;
      // console.log(num1); // gives us a TypeError because const cannot be updated
 const num2 = 19;
 //const num2 = 25;
@@ -85,7 +85,7 @@ const num2 = 19;
 
 // 3. HOISTING //
     //calling the function before it is declared.
-helloWorld();  // prints => 'Hello World!'
+//helloWorld();  // prints => 'Hello World!'
     //function declaration      //this works because functions and variable declarations
 function helloWorld(){          //get copied and hoisted to the top of the scope
   console.log('Hello World!');  //allowing us to call the function before it's declaration

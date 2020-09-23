@@ -37,12 +37,30 @@ function replace(array, string, obj){
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+function remove(array, string){
+    for(let i = 0; i < array.length; i++){
+        if(array[i].name === string){
+            array.splice(i);
+        }
+    }
+}
 
-
-
+//var result = arrayRemove(array, 6);// result = [1, 2, 3, 4, 5, 7, 8, 9, 0]
+    //console.log(result)
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+function add(array, object){
+    if(object['name'].length > 0 && object['species'].length >0){
+        for(let i = 0; i < array.length; i++){
+            if(array[i].name === object.name){
+                return;
+            }
+        }
+        array.push(object);
+    }
+}
+
 
 
 
