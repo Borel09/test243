@@ -43,13 +43,6 @@
  *      Var variables are hoisted to the top of their scope and initialized with a value 
  *      of undefined. Let and const variables are also hoisted to the top of their scope but not 
  *      initialized. 
- *      
- *          
- * 
- * 
- * 
- * 
- * 
  */
 
 // 1. DECLARATION & ASSIGNMENT//
@@ -97,10 +90,3 @@ helloWorld();  // prints => 'Hello World!'
 function helloWorld(){          //get copied and hoisted to the top of the scope
   console.log('Hello World!');  //allowing us to call the function before it's declaration
 }
-
-
-
-
-
-
-
