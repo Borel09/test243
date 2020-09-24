@@ -45,10 +45,10 @@ var data = { results: [
 
   // Use the .length property to console.log the length of the results
   // array.
-
+console.log(results.length)
   // Imagine you want are making a search results page,
   // (console.log) all of the animal names in order.
-
+function
   // Next, Capitalize the first letter of each name and put a label
   // Your end result should look like this:
   // Name: Fox
