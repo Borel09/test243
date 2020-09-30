@@ -22,7 +22,7 @@ var _ = {};
 */
  _.identity = function(value){
      return value;
- }
+ };
 
 /** _.typeOf
 * Arguments:
@@ -43,9 +43,27 @@ var _ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-_.typeof = function(value){
-    return typeof value;
-}
+_.typeOf = function(value){
+        if(value === null){
+        return 'null';
+    }else if(typeof value === 'number'){
+        return 'number';
+    }else if(typeof value === 'string'){
+		return 'string';
+	}else if(typeof value === 'undefined'){
+		return 'undefined';
+	}else if(typeof value === 'boolean'){
+		return 'boolean';
+	}else if(typeof value === 'function'){
+		return 'function';
+	}else if(Object.prototype.toString.call(value) === "[object Date]"){
+		return 'date';
+	}else if(Array.isArray(value)){
+		return 'array';
+	}else {
+		return 'object';
+	}
+};  
 
 /** _.first
 * Arguments:
@@ -64,7 +82,21 @@ _.typeof = function(value){
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(array, number){
+    let result = [];
+        if(!Array.isArray(array)){
+            return result;
+        }else if(!number){
+            return array[0];
+        }else if(number < 0){
+            return result;
+        }else if(number > array.length){
+            return array;
+        }else {
+            result = array.slice(0, number);
+        }
+    return result;
+};
 
 /** _.last
 * Arguments:
@@ -84,6 +116,22 @@ _.typeof = function(value){
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, number){
+    let result = [];
+		if(!Array.isArray(array)){
+			return result;
+		}else if(!number){
+			let last = array.pop();
+			return last;
+		}else if(number < 0){
+			return result;
+		}else if(number > array.length){
+			return array;
+		}else {
+			result = array.slice(Math.max(array.length - number));
+		}	
+	return result;
+};
 
 /** _.indexOf
 * Arguments:
@@ -100,7 +148,14 @@ _.typeof = function(value){
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value){
+    for(let i = 0; i < array.length; i++){
+		if(array[i] === value){
+			return i;
+		}
+	}  
+	return -1;
+};
 
 /** _.contains
 * Arguments:
@@ -116,7 +171,14 @@ _.typeof = function(value){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value){
+	for(let i = 0; i < array.length; i++){
+		if(array[i] === value){
+			return true;
+		}
+	}
+	return false;
+};
 
 /** _.each
 * Arguments:
@@ -133,7 +195,17 @@ _.typeof = function(value){
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
+_.each = function(collection, func){
+    if(Array.isArray(collection)){
+        for(let i = 0; i < collection.length; i++){
+            func(collection[i], i, collection);         //CALLBACK FUNCTION
+        }
+    } else {
+        for(let key in collection){
+            func(collection[key], key, collection);
+        }
+    }
+};
 
 /** _.unique
 * Arguments:
@@ -144,7 +216,15 @@ _.typeof = function(value){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+_.unique = function(array){
+    let result = [];
+	for(let i = 0; i < array.length; i++){
+		if(result.indexOf(array[i]) === -1){
+			result.push(array[i]);
+		}
+	}
+	return result;
+};
 
 /** _.filter
 * Arguments:
@@ -161,6 +241,15 @@ _.typeof = function(value){
 * Extra Credit:
 *   use _.each in your implementation
 */
+_.filter = function(array, func){
+	let result = [];
+	array.forEach(function(ele, i, array){
+		if(typeof ele === 'string' && i < array.length / 2){
+			result.push(array[i]);
+		}
+	});
+	return result;
+};
 
 
 /** _.reject
