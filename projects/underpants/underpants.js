@@ -264,7 +264,15 @@ _.filter = function(array, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function(array, func){
+	let results = [];
+	array.filter(function(ele, i, array){
+		if(typeof ele === 'number' && i >= array.length / 2){
+			results.push(array[i]);
+		}
+	});
+	return results;
+};
 
 /** _.partition
 * Arguments:
