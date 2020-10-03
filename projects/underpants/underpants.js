@@ -244,9 +244,12 @@ _.unique = function(array){
 _.filter = function(array, func){
 	let result = [];
 	array.forEach(function(ele, i, array){
-		if(typeof ele === 'string' && i < array.length / 2){
+		if(func(ele, i, array)){
 			result.push(array[i]);
 		}
+		// if(typeof ele === 'string' && i < array.length / 2){
+		// 	result.push(array[i]);
+		// }
 	});
 	return result;
 };
@@ -267,7 +270,7 @@ _.filter = function(array, func){
 _.reject = function(array, func){
 	let results = [];
 	array.filter(function(ele, i, array){
-		if(typeof ele === 'number' && i >= array.length / 2){
+		if(!array[i] === func(ele, i, array)){
 			results.push(array[i]);
 		}
 	});
@@ -292,7 +295,21 @@ _.reject = function(array, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+_.partition = function(array, func){
+	let str1 = [];
+	let num1 = [];
+	let results = [str1, num1];
 
+	array.filter(function(ele, i, array){
+		if(func(ele, i, array)){
+			str1.push(array[i]);
+		}else {
+			num1.push(array[i]);
+		}
+	});
+	return results;
+	//return results = [str1, num1];
+};
 
 /** _.map
 * Arguments:
@@ -309,6 +326,33 @@ _.reject = function(array, func){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+_.map = function(collection, func){
+	let result = [];
+	if(Array.isArray(collection)){
+		_.each(collection, function(ele, i, array) {
+		    result.push(func(collection[i], i, collection));
+		});
+	}else {
+		_.each(collection, function(value, key, collection){
+			func(value, key, collection);
+		result.push(func(value, key, collection));
+		});
+	}
+	return result;
+};
+	
+	// let result = [];
+	// 	 if(Array.isArray(collection)){
+	//         for(let i = 0; i < collection.length; i++){
+	//             result.push(func(collection[i], i, collection));         //CALLBACK FUNCTION
+	//         }
+	//     } else {
+	//         for(let key in collection){
+	//             func(collection[key], key, collection);
+	// 			result.push(func(collection[key], key, collection));
+	//         }
+	//     }
+	// 	return result;
 
 
 /** _.pluck
@@ -321,7 +365,11 @@ _.reject = function(array, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_.pluck = function(array, key){
+	return array.map(function(obj) {
+    	return obj[key];
+  });
+};
 
 /** _.every
 * Arguments:
@@ -343,7 +391,25 @@ _.reject = function(array, func){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(collection, func){
+	let result = true;
+	if(typeof func === 'undefined'){
+		_.each(collection, function(ele, i, collection){
+			if(collection[i]){
+				result = true;
+			}else {
+				result = false;
+			}
+		});
+	} else {
+		_.each(collection, function(ele, i, collection){
+			if(!(collection[i] && func(ele, i, collection))){
+				result = false;
+			}
+		});
+	}
+	return result;
+};
 
 /** _.some
 * Arguments:
@@ -365,7 +431,23 @@ _.reject = function(array, func){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = function(collection, func){
+	let result = true;
+		if(!func){
+			_.each(collection, function(ele, i, collection){
+				if(collection[i]){
+					return result;
+				}else {
+					result = false;
+				}
+			});
+			return result;
+		}	
+			
+	return !(_.every(collection, function(ele, i, collection){
+		return !func(ele, i, collection);
+	}));
+};
 
 /** _.reduce
 * Arguments:
@@ -385,7 +467,23 @@ _.reject = function(array, func){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = function(array, callBackFunction, initialValue){
+	if(initialValue !== undefined){
+		let result = initialValue;
+		_.each(array, function(ele, i, array){
+			result = callBackFunction(result, ele, i, array);
+		});
+		return result;
+	}else {
+		let result = array[0];
+		_.each(array, function(ele, i, array) {
+		    if( i !== 0) {
+		    	result = callBackFunction(result, ele, i, array);
+		    }
+		});
+		return result;
+	}
+};
 
 /** _.extend
 * Arguments:
