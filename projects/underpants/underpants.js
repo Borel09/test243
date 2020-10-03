@@ -499,7 +499,13 @@ _.reduce = function(array, callBackFunction, initialValue){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = function(obj) {
+    _.each(arguments, function(extendObj) {
+        for (let key in extendObj)
+            obj[key] = extendObj[key];
+    });
+    return obj;
+};
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
