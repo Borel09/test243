@@ -247,9 +247,6 @@ _.filter = function(array, func){
 		if(func(ele, i, array)){
 			result.push(array[i]);
 		}
-		// if(typeof ele === 'string' && i < array.length / 2){
-		// 	result.push(array[i]);
-		// }
 	});
 	return result;
 };
@@ -328,32 +325,24 @@ _.partition = function(array, func){
 */
 _.map = function(collection, func){
 	let result = [];
-	if(Array.isArray(collection)){
-		_.each(collection, function(ele, i, array) {
-		    result.push(func(collection[i], i, collection));
+	_.each(collection, function(ele, i, collection){
+		result.push(func(collection[i], i, collection));
 		});
-	}else {
-		_.each(collection, function(value, key, collection){
-			func(value, key, collection);
-		result.push(func(value, key, collection));
-		});
-	}
 	return result;
-};
 	
-	// let result = [];
-	// 	 if(Array.isArray(collection)){
-	//         for(let i = 0; i < collection.length; i++){
-	//             result.push(func(collection[i], i, collection));         //CALLBACK FUNCTION
-	//         }
-	//     } else {
-	//         for(let key in collection){
-	//             func(collection[key], key, collection);
-	// 			result.push(func(collection[key], key, collection));
-	//         }
-	//     }
-	// 	return result;
-
+	
+	// if(Array.isArray(collection)){
+	// 	_.each(collection, function(ele, i, array) {
+	// 	    result.push(func(collection[i], i, collection));
+	// 	});
+	// }else {
+	// 	_.each(collection, function(value, key, collection){
+	// 		func(value, key, collection);
+	// 	result.push(func(value, key, collection));
+	// 	});
+	// }
+	// return result;
+};
 
 /** _.pluck
 * Arguments:
