@@ -3,7 +3,7 @@
 'use strict';
 
 var customers = require('./data/customers.json');
-var _ = require(/* Replace this with the name of your lodown! */);
+var _ = require('lowdown-borel');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -15,23 +15,71 @@ var _ = require(/* Replace this with the name of your lodown! */);
  * 3. We started the first one for you as an example! Make the rest in that style.
  *
  * 4. To test your work, run the following command in your terminal:
- *
- *    npm start --prefix ./<YOUR_GITHUB_FOLDER/projects/let-s-get-functional
+ *      //make sure you are cd inside of borel09.github.io folder in the terminal
+ *    npm start --prefix ./projects/let-s-get-functional
  *
  *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
  */
 
 var maleCount = function(array) {
-
+    let male = 0;
+    _.filter(array, function(customer){
+        if(customer.gender === 'male'){
+            male += 1;
+        }
+    });
+    return male;
 };
 
-var femaleCount;
+var femaleCount = function(array){
+    let female = 0;
+    array.reduce(function(result, ele, i){
+        if(array[i].gender === 'female'){
+            female += 1;
+        }
+    }, 0);
+    return female;
+};
 
-var oldestCustomer;
+var oldestCustomer = function(array){
+    let oldest = array[0];
+    array.reduce(function(previousPerson, currentPerson){
+        if(currentPerson.age > previousPerson.age){
+            oldest = currentPerson;
+            return oldest;
+        }
+        return previousPerson;
+    });
+    return oldest.name;
+};
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+    let youngest = array[0];
+    array.reduce(function(previousPerson, currentPerson){
+        if(currentPerson.age < previousPerson.age){
+            youngest = currentPerson;
+            return youngest;
+        }
+        return previousPerson;
+    });
+    return youngest.name;
+};
 
-var averageBalance;
+var averageBalance = function(array){
+	let noStr = [];
+	let average = 0;
+	let sum = 0;
+	array.filter(function(customer){
+		let numBal = customer.balance.replace(/[^\d.-]/g, '');
+		let realNum = parseFloat(numBal);
+		noStr.push(realNum);
+	});
+	for(let i = 0; i < noStr.length; i++){
+		sum += noStr[i];
+		average = sum/noStr.length;
+	}
+	return average;
+};
 
 var firstLetterCount;
 
