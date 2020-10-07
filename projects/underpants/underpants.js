@@ -324,12 +324,23 @@ _.partition = function(array, func){
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 _.map = function(collection, func){
-	let result = [];
-	_.each(collection, function(ele, i, collection){
-		result.push(func(collection[i], i, collection));
-		});
-	return result;
+	// let result = [];
+	// _.each(collection, function(ele, i, collection){
+	// 	result.push(func(collection[i], i, collection));
+	// 	});
+	// return result;
 	
+	let result = [];
+	if(Array.isArray(collection)){
+		for(var i = 0; i < collection.length; i++) {
+            result.push(func(collection[i], i, collection));
+        }	
+	} else {
+		for (var key in collection) {
+            result.push(func(collection[key], key, collection));
+        }
+	}
+	return result;
 	
 	// if(Array.isArray(collection)){
 	// 	_.each(collection, function(ele, i, array) {

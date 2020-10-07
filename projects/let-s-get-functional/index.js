@@ -81,11 +81,50 @@ var averageBalance = function(array){
 	return average;
 };
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter){
+	let totalNames = 0;
+	array.filter(function(ele, i, collection){
+		let name = collection[i].name.toLowerCase();
+		if(name[0] === letter.toLowerCase()){
+			totalNames++;
+		}
+		return totalNames;
+	});
+	return totalNames;
+};
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter){
+	let total = 0;
+	let friendList;
 
-var friendsCount;
+	for(let i = 0; i < array.length; i++){
+		if(array[i].name === customer){
+			friendList = array[i].friends;
+		}
+	}
+	friendList.filter(function(ele, i, collection){
+		let friendName = collection[i].name.toLowerCase();
+		if(friendName[0] === letter.toLowerCase()){
+			total++;
+		}
+	});
+	return total;    
+};
+
+var friendsCount = function(array, name){
+	// let total = [];
+	// let friendList;
+	// for(let i = 0; i < array.length; i++){
+	// 	if(array[i].name === name){
+	// 		friendList = array[i].friends;
+	// 	}
+	// }
+	// friendList.filter(function(ele, i, collection){
+	// 	let friendss = collection[i].name;
+	// 	total.push(friendss);
+	// });
+	// return total;
+};
 
 var topThreeTags;
 
