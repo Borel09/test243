@@ -112,23 +112,60 @@ var friendFirstLetterCount = function(array, customer, letter){
 };
 
 var friendsCount = function(array, name){
-	// let total = [];
-	// let friendList;
-	// for(let i = 0; i < array.length; i++){
-	// 	if(array[i].name === name){
-	// 		friendList = array[i].friends;
-	// 	}
-	// }
-	// friendList.filter(function(ele, i, collection){
-	// 	let friendss = collection[i].name;
-	// 	total.push(friendss);
-	// });
-	// return total;
+	let total = [];
+	for(let i = 0; i < array.length; i++){
+		if(array[i].name === name){
+			continue;		
+		} else {
+			let friends = array[i].friends;
+			for(let j = 0; j <  friends.length; j++){
+				if(friends[j].name === name){
+					total.push(array[i].name);
+				}
+			}
+		}
+	}
+	return total;
 };
 
-var topThreeTags;
+var topThreeTags = function(array){
+	let result = {};
+	let tags;
+	
+	for(let i = 0; i < array.length; i++){
+		tags = array[i].tags;
+		for(let j = 0; j < tags.length; j++){
+			if(tags[j] in result){
+				result[tags[j]] += 1;
+			} else {
+				result[tags[j]] = 1;
+			}
+		}
+	}
+	let entries = Object.entries(result);
+	let sortedEntries = entries.sort(function(a, b){
+		return b[1] - a[1];
+	});
+	return sortedEntries.slice(0, 3).map(function(x){
+		return x[0];
+	});	
+};
 
-var genderCount;
+var genderCount = function(array){
+	let genderCount = {};
+	let gender;
+
+	for(let i = 0; i < array.length; i++){
+		gender = array[i].gender;	
+		if(gender in genderCount){
+			genderCount[gender] += 1;
+		} else {
+			genderCount[gender] = 1;
+		}
+		
+	}
+	return genderCount;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
