@@ -24,7 +24,7 @@ function loop(start, test, update, body) {
 // /////////////////////////////////////////////////////////////////////////////
 
 function every(array, test) {
-  return !array.some(ele => !test(ele))
+  return !array.some(ele => !test(ele));
 }
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -45,7 +45,7 @@ function countBy(items, groupName) {
   let counts = [];
   for (let item of items) {
     let name = groupName(item);
-    let known = counts.findIndex(c => c.name == name);
+    let known = counts.findIndex(c => c.name === name);
     if (known == -1) {
       counts.push({name, count: 1});
     } else {
@@ -56,22 +56,14 @@ function countBy(items, groupName) {
 }
 
 function dominantDirection(text) {
-  let scripts = countBy(text, char => {
+  let counted = countBy(text, char => {
     let script = characterScript(char.codePointAt(0));
     return script ? script.direction : "none";
   }).filter(({name}) => name != "none");
-  switch (scripts.length) {
-    case 0:
-      return 'no dominant direction found';
-    case 1:
-      return scripts[0].name;
-    default:
-      if (scripts.reduce((acc, cur) => acc.count === cur.count)) {
-        return 'no dominant direction found';
-      } else {
-        return scripts.reduce((acc, cur) => acc.count >= cur.count ? acc.name : cur.name);
-      }
-  }
+
+  if (counted.length == 0) return "ltr";
+
+  return counted.reduce((a, b) => a.count > b.count ? a : b).name;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
